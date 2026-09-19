@@ -66,6 +66,29 @@ python -m pip install -r requirements.txt
 streamlit run streamlit_app.py
 ```
 
+## 🌐 Channel profile localizations
+
+The repository also includes a small CLI for translating the **channel name and
+channel description**, separately from video metadata.
+
+Create your own local `data/channel-localizations.json` file, then run:
+
+```bash
+python update_channel_localizations.py
+python update_channel_localizations.py --apply
+```
+
+The JSON contains your channel-specific translations and is intentionally
+ignored by Git: do not commit it. The first command is a read-only dry run that
+shows existing Studio locale keys and the `ADD`, `UPDATE`, and `UNCHANGED`
+diff. Use `--apply` only after reviewing that output. The script preserves
+unrelated existing channel localizations, writes a local backup before changing
+YouTube, uses a conditional write when an ETag is available, and verifies the
+result afterward.
+
+See [Channel profile localizations](docs/channel-localizations.md) for the local
+JSON format and safety rules.
+
 ## ✅ Translate workflow
 
 ```text

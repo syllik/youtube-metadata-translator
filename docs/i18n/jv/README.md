@@ -101,6 +101,18 @@ Publish validasi draft maneh lan njupuk video maneh sakdurunge nulis. Yen video 
 
 Yen OAuth file ora ana utawa malformed, download maneh JSON Desktop app. Yen callback gagal, terminal kudu tetep mbukak lan 127.0.0.1:8080 diijini; yen authorization kadaluwarsa, authorize maneh lan busak token.json mung yen perlu. Tindakake action ing UI kanggo quota, network, missing video, utawa error login Codex. Aja nuduhake OAuth JSON, token.json, API token, utawa output environment lengkap.
 
+
+## Lokalisasi jeneng lan description channel
+
+Saliyane metadata video, `update_channel_localizations.py` bisa nerbitake terjemahan **jeneng lan description YouTube channel**. Simpen terjemahan khusus channel kanthi lokal ing `data/channel-localizations.json`; file iki sengaja di-ignore dening Git lan ora kena di-commit.
+
+~~~bash
+python update_channel_localizations.py
+python update_channel_localizations.py --apply
+~~~
+
+Command pisanan yaiku dry-run read-only sing nuduhake diff. Gunakake `--apply` mung sawise mriksa output; script nggawe local backup, njaga existing localizations liyane, lan verify asil sawise write. Deleng [channel localization guide](../../channel-localizations.md) kanggo format lan aturan keamanan.
+
 ## Lisensi
 
 Delengen [LICENSE](../../../LICENSE).

@@ -21,8 +21,9 @@ youtube-metadata-translator/
 │   ├── badges.py                    # Shared localization badge renderer
 │   └── target_selection.py          # Primary Translate target selector
 ├── models.py                        # Shared immutable data models
-├── data/                             # Checked-in video metadata catalog snapshot
-│   └── youtube-metadata-languages.json
+├── data/                             # Checked-in video metadata catalog + local ignored user data
+│   ├── youtube-metadata-languages.json
+│   └── channel-localizations.json     # Local user-owned file; ignored by Git
 ├── language_catalog.py              # Validated application and metadata catalogs
 ├── language_labels.py               # Code-first English display labels
 ├── llm_localization_package.py      # Source context, prompt, schema, validation
@@ -30,6 +31,7 @@ youtube-metadata-translator/
 ├── codex_localization_generator.py   # Missing-target batching/retry/merge
 ├── generation_controller.py          # Background generation lifecycle/cancellation
 ├── generate_codex_localizations.py   # Optional local CLI entry point
+├── update_channel_localizations.py    # Dry-run/apply channel profile localizations
 ├── youtube_account.py               # YouTube OAuth, listing, and publishing
 ├── localizations.py                 # JSON validation, diff, and merge logic
 ├── localization_service.py          # Preview and publish orchestration
@@ -87,10 +89,21 @@ generation smoke tests and batching checks are documented in
 [LLM localizations](llm-localizations.md#recommended-first-smoke-test); do not
 run them as part of the credential-free suite.
 
+The channel profile localization CLI is dry-run by default. Its
+`data/channel-localizations.json` input is user-owned, intentionally ignored by
+Git, and must never be required by the test suite. Its write map is keyed by
+exact Studio locale IDs observed from live channel resources (for example
+`en_US` and `af_ZA`); the informational metadata-language codes in the local
+file do not drive channel writes. Unit tests use temporary synthetic fixtures
+for catalog validation, exact Studio-key usage, overlap protection, backup,
+diff, merge-preservation, FAQ coverage, and verification helpers without
+credentials. Running it with `--apply` is a separate live YouTube mutation
+and must not be part of the credential-free test suite.
+
 ## 🧹 Run local checks
 
 ```bash
-python -m compileall -q streamlit_app.py pages models.py language_catalog.py language_labels.py llm_localization_package.py codex_localization_runner.py codex_localization_generator.py generation_controller.py generate_codex_localizations.py services state ui youtube_account.py localizations.py localization_service.py tests
+python -m compileall -q streamlit_app.py pages models.py language_catalog.py language_labels.py llm_localization_package.py codex_localization_runner.py codex_localization_generator.py generation_controller.py generate_codex_localizations.py update_channel_localizations.py services state ui youtube_account.py localizations.py localization_service.py tests
 git diff --check
 git diff --cached --check
 python -m pip check

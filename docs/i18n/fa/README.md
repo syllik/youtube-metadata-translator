@@ -101,6 +101,18 @@ Publish draft را دوباره validate می‌کند و درست پیش از w
 
 اگر OAuth file گم شده یا malformed است، JSON جدید Desktop app را دانلود کنید. اگر callback شکست خورد terminal را باز نگه دارید و 127.0.0.1:8080 را مجاز کنید؛ اگر authorization منقضی یا لغو شد دوباره authorize کنید و token.json را فقط در صورت نیاز حذف کنید. برای quota، network، missing video و خطای login Codex، action نمایش‌داده‌شده در UI را انجام دهید. OAuth JSON، token.json، API token یا خروجی کامل environment را به اشتراک نگذارید.
 
+
+## بومی‌سازی نام و توضیح کانال
+
+علاوه بر metadata ویدیوها، با `update_channel_localizations.py` می‌توانید **نام و توضیح کانال YouTube** را هم ترجمه و منتشر کنید. ترجمه‌های مخصوص کانال را فقط به‌صورت محلی در `data/channel-localizations.json` نگه دارید؛ این فایل عمداً توسط Git نادیده گرفته می‌شود و نباید commit شود.
+
+~~~bash
+python update_channel_localizations.py
+python update_channel_localizations.py --apply
+~~~
+
+فرمان اول یک dry-run فقط‌خواندنی است و diff را نشان می‌دهد. فقط بعد از بررسی آن `--apply` را اجرا کنید؛ اسکریپت قبل از write یک backup محلی می‌سازد، localizations دیگر را حفظ می‌کند و نتیجه را پس از نوشتن verify می‌کند. برای format و نکات ایمنی [راهنمای channel localization](../../channel-localizations.md) را ببینید.
+
 ## مجوز
 
 [LICENSE](../../../LICENSE) را ببینید.

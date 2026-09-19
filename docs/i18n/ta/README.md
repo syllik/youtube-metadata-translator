@@ -101,6 +101,18 @@ Publish draft-ஐ மீண்டும் validate செய்து write-க
 
 OAuth file இல்லை அல்லது malformed என்றால் புதிய Desktop app JSON download செய்யவும். callback தோல்வியுற்றால் terminal திறந்திருக்க வைத்து 127.0.0.1:8080 அனுமதிக்கவும்; authorization expire/revoke ஆனால் மீண்டும் authorize செய்து token.json-ஐ தேவையானபோது மட்டும் நீக்கவும். quota, network, missing video அல்லது Codex login errors-க்கு UI action-ஐப் பின்பற்றவும். OAuth JSON, token.json, API token அல்லது முழு environment output-ஐ பகிர வேண்டாம்.
 
+
+## Channel பெயர் மற்றும் description localization
+
+Video metadata-க்கு கூடுதலாக `update_channel_localizations.py` மூலம் **YouTube channel பெயரும் description-மும்** மொழிபெயர்த்து publish செய்யலாம். உங்கள் channel-specific translations-ஐ local `data/channel-localizations.json`-ல் வைத்திருக்கவும்; இந்த file திட்டமிட்டு Git ignore செய்யப்பட்டிருப்பதால் commit செய்ய வேண்டாம்.
+
+~~~bash
+python update_channel_localizations.py
+python update_channel_localizations.py --apply
+~~~
+
+முதல் command read-only dry-run ஆகும்; அது diff-ஐ காட்டும். Output-ஐ சரிபார்த்த பிறகே `--apply` இயக்கவும்; script local backup உருவாக்கி, பிற existing localizations-ஐ பாதுகாத்து, write முடிந்ததும் result-ஐ verify செய்கிறது. Format மற்றும் safety rules-க்கு [channel localization guide](../../channel-localizations.md) பார்க்கவும்.
+
 ## உரிமம்
 
 [LICENSE](../../../LICENSE)-ஐப் பார்க்கவும்.

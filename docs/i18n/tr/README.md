@@ -101,6 +101,18 @@ Publish taslağı yeniden doğrular ve videoyu yazmadan hemen önce tekrar alır
 
 OAuth dosyası yoksa veya bozuksa yeni Desktop app JSON indirin. callback başarısızsa terminali açık tutup 127.0.0.1:8080 erişimine izin verin; yetki süresi dolduysa yeniden yetkilendirin ve token.json dosyasını yalnızca gerektiğinde silin. quota, network, missing video ve Codex login hatalarında arayüzün eylemini izleyin. OAuth JSON, token.json, API token veya tam ortam çıktısını paylaşmayın.
 
+
+## Kanal adını ve açıklamasını yerelleştirme
+
+Video metadata dışında `update_channel_localizations.py` ile **YouTube kanal adı ve kanal açıklaması** çevirilerini de yayınlayabilirsiniz. Kanala özel çevirileri yerel `data/channel-localizations.json` dosyasında tutun; bu dosya bilerek Git tarafından ignore edilir ve commit edilmemelidir.
+
+~~~bash
+python update_channel_localizations.py
+python update_channel_localizations.py --apply
+~~~
+
+İlk komut salt okunur bir dry-run'dır ve diff'i gösterir. Çıktıyı kontrol ettikten sonra `--apply` kullanın; script önce yerel backup oluşturur, diğer existing localizations kayıtlarını korur ve yazımdan sonra sonucu verify eder. Format ve güvenlik kuralları için [channel localization guide](../../channel-localizations.md) sayfasına bakın.
+
 ## Lisans
 
 [LICENSE](../../../LICENSE) dosyasına bakın.

@@ -101,6 +101,18 @@ Publish valida otra vez el borrador y vuelve a obtener el vídeo. Si cambió, no
 
 Si falta o es incorrecto el OAuth, descarga de nuevo un JSON Desktop app y sigue la acción mostrada. Si falla el callback, deja abierta la terminal y permite 127.0.0.1:8080; si caduca la autorización, autoriza de nuevo y elimina token.json solo cuando sea necesario. Sigue las acciones mostradas para cuota, red, vídeo inexistente o Codex. Nunca compartas OAuth JSON, token.json, API tokens ni la salida completa del entorno.
 
+
+## Localizar el nombre y la descripción del canal
+
+Además de los metadatos de vídeos, `update_channel_localizations.py` puede publicar traducciones del **nombre y la descripción del canal de YouTube**. Guarda las traducciones específicas de tu canal en `data/channel-localizations.json`; el archivo está ignorado intencionadamente por Git y no debe incluirse en commits.
+
+~~~bash
+python update_channel_localizations.py
+python update_channel_localizations.py --apply
+~~~
+
+El primer comando es un dry-run de solo lectura que muestra las diferencias. Usa `--apply` solo después de revisarlas; el script crea una copia de seguridad local, conserva otras localizaciones existentes y verifica el resultado tras escribir. Consulta la [guía de localización del canal](../../channel-localizations.md) para el formato y las reglas de seguridad.
+
 ## Licencia
 
 Consulta [LICENSE](../../../LICENSE).

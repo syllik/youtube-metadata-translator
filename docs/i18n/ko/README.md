@@ -101,6 +101,18 @@ Publish는 draft를 다시 검증하고 쓰기 직전에 video를 다시 가져�
 
 OAuth file이 없거나 잘못되었으면 새 Desktop app JSON을 다운로드하세요. callback이 실패하면 terminal을 열어 두고 127.0.0.1:8080을 허용합니다. authorization이 만료되거나 취소되면 다시 authorize하고 token.json은 필요한 경우에만 삭제합니다. quota, network, missing video 또는 Codex login 오류에서는 UI의 안내를 따르세요. OAuth JSON, token.json, API token 또는 전체 환경 출력을 공유하지 마세요.
 
+
+## 채널 이름과 설명 현지화
+
+동영상 metadata와 별도로 `update_channel_localizations.py`를 사용해 **YouTube 채널 이름과 채널 설명** 번역을 게시할 수 있습니다. 채널별 번역은 로컬 `data/channel-localizations.json`에 보관하세요. 이 file은 의도적으로 Git ignore 대상이며 commit하면 안 됩니다.
+
+~~~bash
+python update_channel_localizations.py
+python update_channel_localizations.py --apply
+~~~
+
+첫 command는 read-only dry-run으로 diff를 보여 줍니다. Output을 확인한 뒤에만 `--apply`를 실행하세요. script는 write 전에 local backup을 만들고, 다른 existing localizations를 보존하며, write 후 결과를 verify합니다. Format과 안전 규칙은 [channel localization guide](../../channel-localizations.md)를 참고하세요.
+
 ## 라이선스
 
 [LICENSE](../../../LICENSE)를 참조하세요.

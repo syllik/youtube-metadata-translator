@@ -101,6 +101,18 @@ Publish は下書きを再検証し、直前に動画を再取得します。動
 
 OAuth ファイルがない、または不正な場合は Desktop app JSON を再ダウンロードします。callback に失敗したらターミナルを開いたまま 127.0.0.1:8080 を許可し、認証の期限切れや取り消しには再認証します。token.json の削除は必要な場合だけにします。quota、network、missing video、Codex のログインエラーは画面の指示に従ってください。OAuth JSON、token.json、API token、完全な環境出力を共有しないでください。
 
+
+## チャンネル名と説明のローカライズ
+
+動画 metadata とは別に、`update_channel_localizations.py` を使って **YouTube チャンネル名とチャンネル説明** の翻訳を公開できます。チャンネル固有の翻訳は `data/channel-localizations.json` にローカル保存してください。この file は意図的に Git の ignore 対象で、commit しません。
+
+~~~bash
+python update_channel_localizations.py
+python update_channel_localizations.py --apply
+~~~
+
+最初の command は read-only の dry-run で diff を表示します。内容を確認してから `--apply` を実行してください。script は書き込み前に local backup を作成し、既存の他の localizations を保持し、書き込み後に結果を verify します。format と安全ルールは [channel localization guide](../../channel-localizations.md) を参照してください。
+
 ## ライセンス
 
 [LICENSE](../../../LICENSE) を参照してください。

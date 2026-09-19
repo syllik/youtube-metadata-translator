@@ -101,6 +101,18 @@ Publish draft ను మళ్లీ validate చేసి write ముందు
 
 OAuth file లేకపోతే లేదా malformed అయితే కొత్త Desktop app JSON download చేయండి. callback విఫలమైతే terminal తెరిచి 127.0.0.1:8080 అనుమతించండి; authorization expire/revoke అయితే మళ్లీ authorize చేసి అవసరమైతే మాత్రమే token.json తొలగించండి. quota, network, missing video మరియు Codex login errors కు UI action ను అనుసరించండి. OAuth JSON, token.json, API token లేదా పూర్తి environment output share చేయవద్దు.
 
+
+## Channel పేరు మరియు description localization
+
+Video metadataతో పాటు `update_channel_localizations.py` ద్వారా **YouTube channel పేరు మరియు description** అనువాదాలను కూడా publish చేయవచ్చు. మీ channel-specific translations‌ను local `data/channel-localizations.json`లో ఉంచండి; ఈ file‌ను Git కావాలనే ignore చేస్తుంది, కాబట్టి commit చేయకండి.
+
+~~~bash
+python update_channel_localizations.py
+python update_channel_localizations.py --apply
+~~~
+
+మొదటి command read-only dry-run; అది diff చూపిస్తుంది. Output చూసిన తర్వాత మాత్రమే `--apply` నడపండి; script local backup తయారు చేసి, ఇతర existing localizations‌ను అలాగే ఉంచి, write తర్వాత result‌ను verify చేస్తుంది. Format మరియు safety rules కోసం [channel localization guide](../../channel-localizations.md) చూడండి.
+
 ## లైసెన్స్
 
 [LICENSE](../../../LICENSE) చూడండి.

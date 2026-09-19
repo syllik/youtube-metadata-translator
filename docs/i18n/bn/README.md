@@ -101,6 +101,18 @@ Publish draft আবার validate করে এবং ভিডিও পু�
 
 OAuth file missing বা malformed হলে নতুন Desktop app JSON ডাউনলোড করে UI-এর action অনুসরণ করুন। callback ব্যর্থ হলে terminal খোলা রেখে 127.0.0.1:8080 অনুমতি দিন; authorization expire/revoke হলে আবার authorize করুন এবং প্রয়োজন ছাড়া token.json মুছবেন না। quota, network, missing video ও Codex login error-এর জন্য UI-এর নির্দেশ অনুসরণ করুন। OAuth JSON, token.json, API token বা সম্পূর্ণ environment output শেয়ার করবেন না।
 
+
+## চ্যানেলের নাম ও description localization
+
+ভিডিও metadata ছাড়াও `update_channel_localizations.py` দিয়ে **YouTube channel-এর নাম ও description** অনুবাদ প্রকাশ করা যায়। নিজের channel-specific translation `data/channel-localizations.json`-এ local রাখুন; ফাইলটি ইচ্ছাকৃতভাবে Git-এ ignored, তাই commit করবেন না।
+
+~~~bash
+python update_channel_localizations.py
+python update_channel_localizations.py --apply
+~~~
+
+প্রথম command read-only dry-run এবং diff দেখায়। Output যাচাই করার পরেই `--apply` ব্যবহার করুন; script local backup রাখে, অন্য existing localizations সংরক্ষণ করে এবং write-এর পরে ফলাফল verify করে। Format ও safety rules-এর জন্য [channel localization guide](../../channel-localizations.md) দেখুন।
+
 ## লাইসেন্স
 
 [LICENSE](../../../LICENSE) দেখুন।

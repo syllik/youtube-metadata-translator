@@ -4,7 +4,7 @@
 FAQ_ENTRIES = (
     (
         "What is this tool?",
-        "It helps you translate YouTube video titles and descriptions into supported localization languages.",
+        "It helps you translate YouTube video titles and descriptions, and it also includes a separate CLI for localizing the channel name and channel description.",
     ),
     (
         "Why do YouTube localizations matter?",
@@ -21,6 +21,10 @@ FAQ_ENTRIES = (
     (
         "What is the LLM Translation prompt?",
         "It prepares a source-aware prompt for an external LLM. You download its JSON result and upload it on Translate.",
+    ),
+    (
+        "Can I localize the channel name and description too?",
+        "Yes. Use update_channel_localizations.py with your local ignored data/channel-localizations.json file. Run it without --apply first to review the diff, then use --apply only after checking the dry-run output.",
     ),
     (
         "Why use multiple source languages?",

@@ -13,6 +13,7 @@ what you want to do, then follow the numbered steps inside it.
 | 🔐 | [Configuration](configuration.md) | Set up the YouTube OAuth client. |
 | ▶️ | [Translate workflow](translate-workflow.md) | Generate or upload translations, preview, and publish. |
 | ✨ | [LLM Translation prompt](llm-localizations.md) | Prepare an external-LLM prompt or use local Codex generation. |
+| 🌐 | [Channel profile localizations](channel-localizations.md) | Translate and publish the channel name and channel description from a local ignored JSON file. |
 | ❓ | [FAQ](../pages/3_FAQ.py) | Read short answers about the workflow and safe publishing. |
 | 🆘 | [Troubleshooting](troubleshooting.md) | Setup, OAuth, ports, dependencies, or API calls are failing. |
 | 🛡️ | [Security](security.md) | You are handling credentials, tokens, or a leaked secret. |

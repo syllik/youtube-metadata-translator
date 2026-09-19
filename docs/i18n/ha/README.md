@@ -101,6 +101,18 @@ Publish yana sake validate draft kuma ya sake fetch bidiyon kafin write. Idan bi
 
 Idan OAuth file ya ɓace ko malformed ne, sauke sabon JSON na Desktop app. Idan callback ya gaza, bar terminal a buɗe ka ba 127.0.0.1:8080 izini; idan authorization ya ƙare ko an revoke shi, yi authorize kuma ka share token.json ne kawai idan ya zama dole. Bi action na UI don quota, network, missing video ko kuskuren Codex login. Kada ka raba OAuth JSON, token.json, API token ko cikakken environment output.
 
+
+## Fassara sunan channel da description
+
+Baya ga metadata na bidiyo, `update_channel_localizations.py` na iya wallafa fassarar **sunan YouTube channel da description ɗinsa**. Ajiye fassarorin channel ɗinka a cikin `data/channel-localizations.json` a gida; Git yana watsi da wannan file da gangan, don haka kada a commit shi.
+
+~~~bash
+python update_channel_localizations.py
+python update_channel_localizations.py --apply
+~~~
+
+Umarnin farko dry-run ne na karatu-kawai kuma yana nuna diff. Yi `--apply` ne kawai bayan ka duba output; script ɗin yana yin local backup, yana kiyaye sauran existing localizations, sannan yana verify sakamakon bayan write. Duba [channel localization guide](../../channel-localizations.md) don format da ka'idojin tsaro.
+
 ## Lasisi
 
 Duba [LICENSE](../../../LICENSE).

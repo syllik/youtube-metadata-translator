@@ -101,6 +101,18 @@ Publish kiểm tra lại draft và lấy lại video ngay trước khi ghi. Nế
 
 OAuth bị thiếu hoặc sai định dạng thì tải lại JSON Desktop app. Callback lỗi thì giữ terminal mở và cho phép 127.0.0.1:8080; quyền hết hạn thì cấp quyền lại và chỉ xóa token.json khi thật sự cần. Làm theo hành động trong giao diện cho quota, network, missing video hoặc lỗi đăng nhập Codex. Không chia sẻ OAuth JSON, token.json, API token hay toàn bộ output môi trường.
 
+
+## Bản địa hóa tên và mô tả kênh
+
+Ngoài metadata của video, `update_channel_localizations.py` còn có thể xuất bản bản dịch cho **tên và mô tả kênh YouTube**. Hãy giữ các bản dịch riêng của kênh trong file local `data/channel-localizations.json`; file này được Git cố ý ignore và không nên commit.
+
+~~~bash
+python update_channel_localizations.py
+python update_channel_localizations.py --apply
+~~~
+
+Lệnh đầu tiên là dry-run chỉ đọc và hiển thị diff. Chỉ chạy `--apply` sau khi đã kiểm tra output; script tạo backup local, giữ nguyên các existing localizations khác và verify kết quả sau khi write. Xem [channel localization guide](../../channel-localizations.md) để biết format và quy tắc an toàn.
+
 ## Giấy phép
 
 Xem [LICENSE](../../../LICENSE).

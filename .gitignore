@@ -4,6 +4,8 @@ token.pickle
 *.json
 !data/
 !data/youtube-metadata-languages.json
+# User-owned channel profile translations; never commit.
+data/channel-localizations.json
 *.key
 
 # Byte-compiled / optimized / DLL files

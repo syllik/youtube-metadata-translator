@@ -101,6 +101,18 @@ Preview للقراءة فقط ولا يستدعي videos.update. يعرض الت
 
 إذا كان ملف OAuth مفقوداً أو غير صالح فنزّل JSON جديداً من نوع Desktop app. عند فشل callback اترك الطرفية مفتوحة واسمح بـ 127.0.0.1:8080؛ وعند انتهاء التفويض أعد التفويض واحذف token.json فقط عند الحاجة. اتبع الإجراء الظاهر في التطبيق لأخطاء quota أو network أو missing video أو تسجيل دخول Codex. لا تشارك OAuth JSON أو token.json أو API tokens أو مخرجات البيئة الكاملة.
 
+
+## ترجمة اسم القناة ووصفها
+
+يمكن أيضاً ترجمة **اسم قناة YouTube ووصفها** باستخدام الأداة `update_channel_localizations.py`. أنشئ الملف المحلي `data/channel-localizations.json` بترجمات قناتك؛ هذا الملف متجاهَل عمداً بواسطة Git ويجب عدم عمل commit له.
+
+~~~bash
+python update_channel_localizations.py
+python update_channel_localizations.py --apply
+~~~
+
+الأمر الأول dry-run للقراءة فقط ويعرض الفروق. استخدم `--apply` فقط بعد مراجعتها؛ الأداة تحفظ نسخة احتياطية محلية وتحافظ على localizations الأخرى وتتحقق من النتيجة بعد الكتابة. راجع [دليل localizations للقناة](../../channel-localizations.md) للتنسيق وقواعد الأمان.
+
 ## الترخيص
 
 راجع [LICENSE](../../../LICENSE).

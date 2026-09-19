@@ -101,6 +101,18 @@ Publish 会再次校验草稿并重新获取视频。若视频已变化，不会
 
 缺少或格式错误的 OAuth 文件时，按界面提示重新下载 Desktop app JSON。回调失败时保持终端打开并允许 127.0.0.1:8080；授权过期时重新授权，只有确实需要时才删除 token.json。配额、网络、视频不存在和 Codex 登录错误都应按界面提供的动作处理。不要分享 OAuth JSON、token.json、API token 或完整环境输出。
 
+
+## 本地化频道名称和简介
+
+除了视频 metadata，`update_channel_localizations.py` 还可以发布 **YouTube 频道名称和频道简介** 的多语言翻译。请把频道专用翻译保存在本地 `data/channel-localizations.json`；该 file 会被 Git 主动 ignore，不应 commit。
+
+~~~bash
+python update_channel_localizations.py
+python update_channel_localizations.py --apply
+~~~
+
+第一条 command 是只读 dry-run，会显示 diff。确认输出后再执行 `--apply`；script 会先创建本地 backup，保留其他 existing localizations，并在 write 后 verify 结果。文件 format 和安全规则请参阅 [channel localization guide](../../channel-localizations.md)。
+
 ## 许可证
 
 请参阅 [LICENSE](../../../LICENSE)。

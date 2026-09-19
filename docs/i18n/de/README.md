@@ -101,6 +101,18 @@ Publish validiert den Entwurf erneut und ruft das Video direkt vor dem Schreiben
 
 Bei fehlender oder fehlerhafter OAuth-Datei eine neue Desktop app-JSON-Datei laden. Bei callback-Fehler Terminal geöffnet lassen und 127.0.0.1:8080 erlauben; bei abgelaufener authorization erneut autorisieren und token.json nur bei Bedarf löschen. Den UI-Aktionen für quota, network, missing video oder Codex-Loginfehler folgen. OAuth JSON, token.json, API tokens und vollständige Umgebungsdaten nie teilen.
 
+
+## Kanalname und -beschreibung lokalisieren
+
+Zusätzlich zu Videometadaten kann `update_channel_localizations.py` den **YouTube-Kanalnamen und die Kanalbeschreibung** lokalisieren. Die kanalspezifischen Übersetzungen liegen lokal in `data/channel-localizations.json`; diese Datei wird absichtlich von Git ignoriert und darf nicht committed werden.
+
+~~~bash
+python update_channel_localizations.py
+python update_channel_localizations.py --apply
+~~~
+
+Der erste Befehl ist ein schreibgeschützter Dry-Run und zeigt den Diff. `--apply` erst nach der Prüfung ausführen; das Skript erstellt vorher ein lokales Backup, erhält andere vorhandene localizations und verifiziert das Ergebnis nach dem Schreiben. Format und Sicherheitsregeln stehen im [Guide zu Kanal-localizations](../../channel-localizations.md).
+
 ## Lizenz
 
 Siehe [LICENSE](../../../LICENSE).

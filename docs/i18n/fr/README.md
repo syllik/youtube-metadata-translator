@@ -101,6 +101,18 @@ Publish revalide le brouillon et récupère la vidéo juste avant l'écriture. S
 
 Si le fichier OAuth est absent ou incorrect, téléchargez un nouveau JSON Desktop app. En cas d'échec du callback, gardez le terminal ouvert et autorisez 127.0.0.1:8080 ; si l'authorization expire ou est révoquée, recommencez et ne supprimez token.json qu'en cas de besoin. Suivez les actions affichées pour quota, network, missing video ou connexion Codex. Ne partagez jamais OAuth JSON, token.json, API token ou la sortie complète de l'environnement.
 
+
+## Localiser le nom et la description de la chaîne
+
+En plus des métadonnées vidéo, `update_channel_localizations.py` peut publier des traductions du **nom et de la description de la chaîne YouTube**. Conservez les traductions propres à votre chaîne dans `data/channel-localizations.json` en local ; ce fichier est volontairement ignoré par Git et ne doit pas être commité.
+
+~~~bash
+python update_channel_localizations.py
+python update_channel_localizations.py --apply
+~~~
+
+La première commande est un dry-run en lecture seule qui affiche les différences. N'utilisez `--apply` qu'après les avoir vérifiées ; le script crée une sauvegarde locale, conserve les autres localizations existantes et vérifie le résultat après l'écriture. Consultez le [guide de localisation de chaîne](../../channel-localizations.md) pour le format et les règles de sécurité.
+
 ## Licence
 
 Voir [LICENSE](../../../LICENSE).

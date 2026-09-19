@@ -101,6 +101,18 @@ Publish memvalidasi draft lagi dan mengambil video ulang sebelum menulis. Jika v
 
 Jika OAuth file hilang atau malformed, download ulang JSON Desktop app. Jika callback gagal, biarkan terminal terbuka dan izinkan 127.0.0.1:8080; jika authorization kedaluwarsa atau dicabut, authorize lagi dan hapus token.json hanya jika perlu. Ikuti action UI untuk quota, network, missing video, atau error login Codex. Jangan bagikan OAuth JSON, token.json, API token, atau seluruh output environment.
 
+
+## Melokalkan nama dan deskripsi channel
+
+Selain metadata video, `update_channel_localizations.py` dapat menerbitkan terjemahan untuk **nama dan deskripsi YouTube channel**. Simpan terjemahan khusus channel secara lokal di `data/channel-localizations.json`; file ini sengaja diabaikan oleh Git dan tidak boleh di-commit.
+
+~~~bash
+python update_channel_localizations.py
+python update_channel_localizations.py --apply
+~~~
+
+Perintah pertama adalah dry-run read-only yang menampilkan diff. Jalankan `--apply` hanya setelah memeriksa output; script membuat backup lokal, mempertahankan localizations lain yang sudah ada, lalu memverifikasi hasil setelah write. Lihat [panduan channel localization](../../channel-localizations.md) untuk format dan aturan keamanan.
+
 ## Lisensi
 
 Lihat [LICENSE](../../../LICENSE).

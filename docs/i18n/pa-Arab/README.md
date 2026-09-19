@@ -101,6 +101,18 @@ Publish draft نوں فیر validate تے ویڈیو نوں فیر fetch کرد�
 
 OAuth file نہ ہووے یا خراب ہووے تے نواں Desktop app JSON download کرو۔ callback فیل ہووے تے terminal کھلا رکھو تے 127.0.0.1:8080 allow کرو؛ authorization expire یا revoke ہووے تے فیر authorize کرو، token.json صرف ضرورت تے مٹاؤ۔ quota، network، missing video تے Codex login errors لئی UI دا action کرو۔ OAuth JSON، token.json، API tokens یا پورا environment output share نہ کرو۔
 
+
+## چینل دے ناں تے description دی localization
+
+ویڈیو metadata توں علاوہ `update_channel_localizations.py` نال **YouTube channel دا ناں تے description** وی ترجمہ کرکے publish کیتا جا سکدا اے۔ اپنے channel-specific translations نوں local `data/channel-localizations.json` وچ رکھو؛ ایہ file جان بوجھ کے Git وچ ignored اے تے commit نہیں کرنی۔
+
+~~~bash
+python update_channel_localizations.py
+python update_channel_localizations.py --apply
+~~~
+
+پہلی command read-only dry-run اے تے diff دکھاندی اے۔ Output چیک کرن توں بعد ہی `--apply` چلاؤ؛ script local backup بناندی اے، ہور existing localizations نوں محفوظ رکھدی اے تے write توں بعد result verify کردی اے۔ Format تے safety rules لئی [channel localization guide](../../channel-localizations.md) ویکھو۔
+
 ## لائسنس
 
 [LICENSE](../../../LICENSE) ویکھو۔

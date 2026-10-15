@@ -17,6 +17,16 @@
 - Keep user-facing UI copy and documentation terminology consistent with the
   unified Translate workflow and its supporting LLM Translation prompt page.
 
+## Agent role routing
+
+- Planner, Architect, Executor, Reviewer and Auditor are provider-independent
+  workflow roles defined by `syllik/ai-workflow`. Select a runtime by task
+  capability and risk, not a fixed model or vendor identity. Reviewer remains
+  separate and read-only; Executor has no publication or merge authority.
+- References to Codex CLI below describe an optional application translation
+  feature, not the required agent for implementation or independent PR review.
+  Keep the product's existing Codex CLI interface and safety controls intact.
+
 ## Active workflow rules
 
 - The application has one primary Translate workflow and one supporting LLM

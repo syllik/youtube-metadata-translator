@@ -9,6 +9,9 @@
   `docs/superpowers/**` as current user documentation.
 - Preserve technical identifiers, repository paths, BCP-47 codes, product
   names, shell commands, and literal UI labels in localized guides.
+- User documentation contract: `guides`. Canonical user docs are the English
+  guides under `docs/`. Use semantic emoji section markers from
+  `syllik/ai-workflow` `global/documentation.md`.
 - Update the relevant documentation in the same change as any code, UI, UX, or
   workflow change. Do not defer documentation updates to a separate task.
 - Keep documentation aligned with the current implementation. Remove or revise
